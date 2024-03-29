@@ -12,6 +12,7 @@ import { RegisterService } from 'src/app/services/registerService/register.servi
 export class AddBorrowerComponent {
   user = new User();
   msg = '';
+  errormsg = '';
   constructor(
     private addBorrowerService: AddBorrowerService,
     private _router: Router
@@ -24,11 +25,13 @@ export class AddBorrowerComponent {
     this.addBorrowerService.addBorrowerFromRemote(this.user).subscribe(
       (data) => {
         console.log('Responce recived' + this.user.userID);
+        this.errormsg = '';
         this.msg = 'Borrower Added Successful';
       },
       (error) => {
         console.log('Exception occured');
-        this.msg = 'Borrower Already Exists';
+        this.msg = '';
+        this.errormsg = 'Borrower Already Exists';
       }
     );
   }

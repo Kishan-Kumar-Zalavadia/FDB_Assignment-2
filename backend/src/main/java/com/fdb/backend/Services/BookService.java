@@ -21,5 +21,8 @@ public class BookService {
         return bookRepository.findById(id).orElse(null);
     }
 
-    // Other service methods for CRUD operations and business logic
+    public Book addBook(Book book) {
+        return bookRepository.save(book);
+    }
+
 }
