@@ -20,6 +20,7 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.user = this._userService.getUser();
+    console.log(JSON.stringify(this.user));
 
     // ! Remove this line to eliminate default user
     // this.loginUser(2);

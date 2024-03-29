@@ -10,6 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddBookComponent } from './components/add-book/add-book.component';
+import { AddBorrowerComponent } from './components/add-borrower/add-borrower.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+    AddBookComponent,
+    AddBorrowerComponent,
   ],
   imports: [
     BrowserModule,

@@ -40,9 +40,7 @@
           >Password is required field</small
         >
       </div>
-      <div class="checkbox">
-        <label><input type="checkbox" name="remember" /> Remember me</label>
-      </div>
+
       <button
         [disabled]="loginform.form.invalid"
         type="submit"
@@ -54,6 +52,6 @@
     <!-- Method-1 -->
     <!-- * <small class="float-right" (click)="gotoRegistration()">New user? Register here</small> -->
     <!-- Method-2 -->
-    <small [routerLink]="['/register']">New user? Register here!!</small>
+    <!-- <small [routerLink]="['/register']">New user? Register here!!</small> -->
   </div>
 </div>
