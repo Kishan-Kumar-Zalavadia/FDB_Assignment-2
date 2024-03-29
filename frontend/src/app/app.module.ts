@@ -12,6 +12,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { AddBorrowerComponent } from './components/add-borrower/add-borrower.component';
+import { BorrowBookComponent } from './components/borrow-book/borrow-book.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AddBorrowerComponent } from './components/add-borrower/add-borrower.com
     RegisterComponent,
     AddBookComponent,
     AddBorrowerComponent,
+    BorrowBookComponent,
   ],
   imports: [
     BrowserModule,

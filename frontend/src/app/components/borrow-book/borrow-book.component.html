@@ -1,0 +1,46 @@
+<div class="main-container">
+  <div class="container">
+    <h2>Borrow Book</h2>
+    <form #borrowForm="ngForm" (ngSubmit)="onSubmit(borrowForm)">
+      <small class="text-success">{{ msg }}</small>
+      <div class="form-group">
+        <label for="borrowerId">Borrower ID:</label>
+        <input
+          type="number"
+          class="form-control"
+          name="borrowerId"
+          [(ngModel)]="borrowingTransaction.borrowerId"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="bookIsbn">Book ISBN:</label>
+        <input
+          type="number"
+          class="form-control"
+          name="bookIsbn"
+          [(ngModel)]="borrowingTransaction.bookIsbn"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="borrowingDate">Borrowing Date:</label>
+        <input
+          type="date"
+          class="form-control"
+          name="borrowingDate"
+          [(ngModel)]="borrowingTransaction.borrowingDate"
+          required
+        />
+      </div>
+      <!-- You can add more fields as needed -->
+      <button
+        [disabled]="borrowForm.form.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Borrow Book
+      </button>
+    </form>
+  </div>
+</div>
