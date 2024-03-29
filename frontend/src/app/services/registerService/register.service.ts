@@ -12,31 +12,8 @@ export class RegisterService {
   public loginUserFromRemote(user: User): Observable<any> {
     return this._http.post<any>('http://localhost:9292/users/login', user);
   }
-  // public registraterUserFromRemote(user: User): Observable<any> {
-  //   return this._http.post<any>('http://localhost:9292/users/register', user);
-  // }
-
-  public registerUserFromRemoteInclusingRole(
-    roleID: number,
-    user: User
-  ): Observable<any> {
-    console.log('Role ID: ' + roleID);
-    return this._http.post<any>(
-      'http://localhost:9292/users/register/withRoleID/' + roleID,
-      user
-    );
+  public registraterUserFromRemote(user: User): Observable<any> {
+    return this._http.post<any>('http://localhost:9292/users/register', user);
   }
 
-  public registerUserFromRemoteInclusingRoleAndDepartment(
-    roleID: number,
-    departmentID: number,
-    user: User
-  ): Observable<any> {
-    console.log('Role ID: ' + roleID);
-    console.log('Department ID: ' + departmentID);
-    return this._http.post<any>(
-      'http://localhost:9292/users/register/withRoleID/' + roleID +"/department/" + departmentID,
-      user
-    );
-  }
 }

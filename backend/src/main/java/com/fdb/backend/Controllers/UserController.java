@@ -37,24 +37,6 @@ public User registerUser(@RequestBody User user) throws Exception {
     return userService.saveUser(user);
 }
 // ---------------------------------------------------------------------------------------------------
-// User Login
-
-//    @PostMapping("/login")
-//    public User loginUser(@RequestBody User user) throws Exception {
-//        String tempEmailId = user.getEmailID();
-//        String tempPass = user.getPassword();
-//        User userObj = null;
-//        if (tempEmailId != null && tempPass != null) {
-//            userObj = userService.fetchUserByEmailIdAndPassword(tempEmailId, tempPass);
-//        }
-//        if (userObj == null) {
-//            throw new Exception("Bad Credentials");
-//        }
-//        return userObj;
-//    }
-
-
-// ---------------------------------------------------------------------------------------------------
 // User login
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody User user) {
@@ -63,14 +45,6 @@ public User registerUser(@RequestBody User user) throws Exception {
         User userObj = null;
         if (tempEmailId != null && tempPass != null) {
             userObj = userService.fetchUserByEmailIdAndPassword(tempEmailId, tempPass);
-//            if (userObj != null && userObj.getProfile() == null) {
-//                // Create an empty profile for the user
-//                Profile emptyProfile = new Profile();
-//                // Save the empty profile to the user object
-//                userObj.setProfile(emptyProfile);
-//                // Update the user object in the database
-//                userService.saveUser(userObj);
-//            }
         }
         if (userObj == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Bad Credentials");
