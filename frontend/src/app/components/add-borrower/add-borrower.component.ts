@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/userModel/user';
-import { AddBorrowerService } from 'src/app/services/addBorrowerService/add-borrower.service';
-import { RegisterService } from 'src/app/services/registerService/register.service';
+import { BorrowerService } from 'src/app/services/BorrowerService/borrower.service';
 
 @Component({
   selector: 'app-add-borrower',
@@ -14,7 +13,7 @@ export class AddBorrowerComponent {
   msg = '';
   errormsg = '';
   constructor(
-    private addBorrowerService: AddBorrowerService,
+    private borrowerService: BorrowerService,
     private _router: Router
   ) {}
 
@@ -22,7 +21,7 @@ export class AddBorrowerComponent {
 
   addBorrower(AddBorrowerForm: any) {
     console.log(AddBorrowerForm.role);
-    this.addBorrowerService.addBorrowerFromRemote(this.user).subscribe(
+    this.borrowerService.addBorrowerFromRemote(this.user).subscribe(
       (data) => {
         console.log('Responce recived' + this.user.userID);
         this.errormsg = '';

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AddBorrowerService } from './add-borrower.service';
+import { BorrowerService } from './borrower.service';
 
-describe('AddBorrowerService', () => {
-  let service: AddBorrowerService;
+describe('BorrowerService', () => {
+  let service: BorrowerService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AddBorrowerService);
+    service = TestBed.inject(BorrowerService);
   });
 
   it('should be created', () => {
