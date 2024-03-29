@@ -25,5 +25,10 @@ public class BorrowingTransactionController {
         return borrowingTransactionService.getBorrowingTransactionById(id);
     }
 
-    // Other CRUD endpoints as needed
+    @PostMapping("/borrowBook")
+    public BorrowingTransaction borrowBook(@RequestBody BorrowingTransaction borrowingTransaction) {
+        return borrowingTransactionService.borrowBook(borrowingTransaction);
+    }
+
+
 }

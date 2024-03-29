@@ -25,4 +25,7 @@ public class BookService {
         return bookRepository.save(book);
     }
 
+    public void updateBook(Book book) {
+        bookRepository.save(book);
+    }
 }
