@@ -6,19 +6,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class BorrowingTransaction {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userID;
-    private String emailID;
-    private String userName;
-    private String password;
-    private String contactNumber;
-    private boolean isAdmin;
+    private Long id;
+    private Long borrowerId;
+    private Long bookIsbn;
+    private LocalDate borrowingDate;
+    private LocalDate returnDate;
 }

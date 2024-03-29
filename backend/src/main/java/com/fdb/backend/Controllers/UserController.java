@@ -63,7 +63,7 @@ public User registerUser(@RequestBody User user) throws Exception {
 // ---------------------------------------------------------------------------------------------------
 // Get user by userID
     @GetMapping("/{userId}")
-    public User getUserById(@PathVariable int userId) throws Exception{
+    public User getUserById(@PathVariable Long userId) throws Exception{
         User user = userService.fetchUserByUserId(userId);
         if (user == null) {
             // Handle the case where the user with the specified ID is not found.

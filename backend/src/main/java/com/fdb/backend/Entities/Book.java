@@ -6,19 +6,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userID;
-    private String emailID;
-    private String userName;
-    private String password;
-    private String contactNumber;
-    private boolean isAdmin;
+    private long isbn;
+    private String title;
+    private String author;
+    private String genre;
+    private int publicationYear;
+    private boolean available;
+
 }

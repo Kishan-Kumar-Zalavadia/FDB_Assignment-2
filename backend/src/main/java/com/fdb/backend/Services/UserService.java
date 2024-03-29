@@ -36,7 +36,7 @@ public class UserService {
 
     // ---------------------------------------------------------------------------------------------------
 
-    public User fetchUserByUserId(int userId) {
+    public User fetchUserByUserId(Long userId) {
         return userRepository.findById(userId).orElse(null);
     }
 
