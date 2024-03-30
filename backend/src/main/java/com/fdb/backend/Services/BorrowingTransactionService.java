@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -57,37 +58,61 @@ public class BorrowingTransactionService {
 //        }
 //    }
 
-    public ResponseEntity<?> addBorrowingTransaction(BorrowingTransaction borrowingTransaction) {
-        // Check if the user exists
-        User user = userService.getUserById(borrowingTransaction.getUser().getUserID());
+//    public ResponseEntity<?> addBorrowingTransaction(BorrowingTransaction borrowingTransaction) {
+//        // Check if the user exists
+//        User user = userService.getUserById(borrowingTransaction.getUser().getUserID());
+//        if (user == null) {
+//            return new ResponseEntity<>("User with ID " + borrowingTransaction.getUser().getUserID() + " not found", HttpStatus.BAD_REQUEST);
+//        }
+//
+//        // Check if the book exists
+//        Book book = bookService.getBookById(borrowingTransaction.getBook().getIsbn());
+//        if (book == null) {
+//            return new ResponseEntity<>("Book with ISBN " + borrowingTransaction.getBook().getIsbn() + " not found", HttpStatus.BAD_REQUEST);
+//        }
+//
+//        try {
+//            // Update book availability
+//            book.setAvailable(false);
+//            bookService.updateBook(book);
+//
+//            // Save the borrowing transaction
+//            BorrowingTransaction addedTransaction = borrowingTransactionRepository.save(borrowingTransaction);
+//
+//            return new ResponseEntity<>(addedTransaction, HttpStatus.CREATED);
+//        } catch (Exception e) {
+//            // Handle duplicate entry exception
+//            if (e.getCause() instanceof ConstraintViolationException) {
+//                return new ResponseEntity<>("Duplicate entry for borrowing transaction", HttpStatus.BAD_REQUEST);
+//            } else {
+//                return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+//            }
+//        }
+//    }
+
+    public BorrowingTransaction addBorrowingTransaction(Long userId, Long bookIsbn, BorrowingTransaction tempBorrowingTransaction) {
+        // Get the user by ID
+        User user = userService.getUserById(userId);
         if (user == null) {
-            return new ResponseEntity<>("User with ID " + borrowingTransaction.getUser().getUserID() + " not found", HttpStatus.BAD_REQUEST);
+            throw new RuntimeException("User with ID " + userId + " not found");
         }
 
-        // Check if the book exists
-        Book book = bookService.getBookById(borrowingTransaction.getBook().getIsbn());
+        // Get the book by ISBN
+        Book book = bookService.getBookById(bookIsbn);
         if (book == null) {
-            return new ResponseEntity<>("Book with ISBN " + borrowingTransaction.getBook().getIsbn() + " not found", HttpStatus.BAD_REQUEST);
+            throw new RuntimeException("Book with ISBN " + bookIsbn + " not found");
         }
 
-        try {
-            // Update book availability
-            book.setAvailable(false);
-            bookService.updateBook(book);
+        // Create the borrowing transaction
+        BorrowingTransaction borrowingTransaction = new BorrowingTransaction();
+//        borrowingTransaction.setBorrowingDate(borrowingDate);
+        borrowingTransaction.setUser(user);
+        borrowingTransaction.setBook(book);
 
-            // Save the borrowing transaction
-            BorrowingTransaction addedTransaction = borrowingTransactionRepository.save(borrowingTransaction);
-
-            return new ResponseEntity<>(addedTransaction, HttpStatus.CREATED);
-        } catch (Exception e) {
-            // Handle duplicate entry exception
-            if (e.getCause() instanceof ConstraintViolationException) {
-                return new ResponseEntity<>("Duplicate entry for borrowing transaction", HttpStatus.BAD_REQUEST);
-            } else {
-                return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
+        // Save the borrowing transaction
+        return borrowingTransactionRepository.save(borrowingTransaction);
     }
+
 
 
     public BorrowingTransaction getBorrowingTransactionById(Long id) {

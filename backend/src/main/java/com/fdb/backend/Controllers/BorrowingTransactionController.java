@@ -3,10 +3,14 @@ package com.fdb.backend.Controllers;
 import com.fdb.backend.Entities.BorrowingTransaction;
 import com.fdb.backend.Services.BorrowingTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -28,10 +32,17 @@ public class BorrowingTransactionController {
     }
 
 
-    @PostMapping("/borrowBook")
-    public ResponseEntity<?> addBorrowingTransaction(@RequestBody BorrowingTransaction borrowingTransaction) {
-        System.out.println("INPUT: "+ borrowingTransaction.getUser().getUserID());
-        System.out.println("INPUT: "+ borrowingTransaction.getBook().getIsbn());
-        return borrowingTransactionService.addBorrowingTransaction(borrowingTransaction);
+    @PostMapping("/borrow/{userId}/{bookIsbn}")
+    public ResponseEntity<?> addBorrowingTransaction(
+            @PathVariable Long userId,
+            @PathVariable Long bookIsbn,
+            @RequestBody BorrowingTransaction borrowingTransaction
+    ) {
+        try {
+            BorrowingTransaction addedTransaction = borrowingTransactionService.addBorrowingTransaction(userId, bookIsbn, borrowingTransaction);
+            return new ResponseEntity<>(addedTransaction, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 }
