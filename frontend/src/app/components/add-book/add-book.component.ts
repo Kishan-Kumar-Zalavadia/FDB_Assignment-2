@@ -11,7 +11,7 @@ import { BookService } from 'src/app/services/bookService/book.service';
 export class AddBookComponent {
   constructor(private bookService: BookService) {}
   msg = '';
-  errormsg ='';
+  errormsg = '';
 
   newBook = new Book();
 
@@ -20,9 +20,9 @@ export class AddBookComponent {
       this.bookService.addBook(this.newBook).subscribe(
         (response) => {
           console.log('Book added successfully:', response);
-          this.errormsg='';
+          this.errormsg = '';
           this.msg = 'Book Added Successfully';
-          form.reset();
+          // form.reset();
         },
         (error) => {
           console.error('Error adding book:', error);
@@ -30,10 +30,10 @@ export class AddBookComponent {
             error.error ===
             'Book with ISBN ' + this.newBook.isbn + ' already exists'
           ) {
-            this.msg='';
+            this.msg = '';
             this.errormsg = 'Book already exists';
           } else {
-            this.msg=''
+            this.msg = '';
             this.errormsg = 'Error adding book: ' + error.message;
           }
         }
