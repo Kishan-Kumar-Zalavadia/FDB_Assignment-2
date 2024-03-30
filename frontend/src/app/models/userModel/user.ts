@@ -4,5 +4,5 @@ export class User {
   userName!: string;
   contactNumber!: string;
   password!: string;
-  isAdmin?: boolean;
+  admin: boolean = false;
 }

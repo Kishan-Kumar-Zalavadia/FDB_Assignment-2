@@ -1,16 +1,16 @@
 <nav class="navbar">
   <div class="navbar-left">
-    <a routerLink="profile" routerLinkActive="selected" class="list-item">{{
+    <a routerLink="/home" routerLinkActive="selected" class="list-item">{{
       user.userName
     }}</a>
-    <ng-container *ngIf="!user.isAdmin">
+    <ng-container *ngIf="user.admin">
       <a routerLink="addBook" class="list-item">Add Book</a>
       <a routerLink="addBorrower" class="list-item">Add Borrower</a>
       <a routerLink="borrowBook" class="list-item">Borrow Book</a>
-      <a routerLink="books" class="list-item">Books</a>
       <a routerLink="transactions" class="list-item">Transactions</a>
-      <a routerLink="history" class="list-item">History</a>
     </ng-container>
+    <a routerLink="books" class="list-item">Books</a>
+    <a routerLink="history" class="list-item">History</a>
     <a routerLink="/login" class="list-item">Log Out</a>
   </div>
 </nav>

@@ -60,7 +60,7 @@ export class HistoryComponent {
           `User ID: ${user.userID}\nEmail: ${user.emailID}\nName: ${
             user.userName
           }\nContact Number: ${user.contactNumber}\nAdmin: ${
-            user.isAdmin ? 'Yes' : 'No'
+            user.admin ? 'Yes' : 'No'
           }`
         );
       },
