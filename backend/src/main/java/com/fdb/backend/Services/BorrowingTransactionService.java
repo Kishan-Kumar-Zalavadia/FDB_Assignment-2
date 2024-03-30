@@ -27,6 +27,7 @@ public class BorrowingTransactionService {
     @Autowired
     private UserService userService;
 
+
     public List<BorrowingTransaction> getAllBorrowingTransactions() {
         return borrowingTransactionRepository.findAll();
     }
@@ -125,4 +126,29 @@ public class BorrowingTransactionService {
         return borrowingTransactionRepository.findById(id).orElse(null);
 
     }
+
+    public void returnBook(BorrowingTransaction borrowingTransaction) {
+        if (borrowingTransaction == null) {
+            throw new IllegalArgumentException("Borrowing transaction object cannot be null");
+        }
+
+        // Retrieve the borrowing transaction by ID
+        BorrowingTransaction transaction = borrowingTransactionRepository.findById(borrowingTransaction.getId()).orElse(null);;
+        if (transaction == null) {
+            throw new IllegalArgumentException("Transaction not found");
+        }
+
+        // Set the return date to the current date
+        transaction.setReturnDate(LocalDate.now());
+        borrowingTransactionRepository.save(transaction);
+
+        // Update book availability
+        Book book = bookService.getBookById(transaction.getBook().getIsbn());
+        if (book == null) {
+            throw new IllegalArgumentException("Book not found");
+        }
+        book.setAvailable(true);
+        bookService.updateBook(book);
+    }
+
 }

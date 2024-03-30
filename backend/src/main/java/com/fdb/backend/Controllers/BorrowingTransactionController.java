@@ -55,4 +55,16 @@ public class BorrowingTransactionController {
     public ResponseEntity<?> addBorrowingTransaction(@RequestBody BorrowingTransaction borrowingTransaction) {
         return borrowingTransactionService.addBorrowingTransaction(borrowingTransaction);
     }
+
+    @PutMapping("/return")
+    public ResponseEntity<?> returnBook(@RequestBody BorrowingTransaction borrowingTransaction) {
+        try {
+            borrowingTransactionService.returnBook(borrowingTransaction);
+            return ResponseEntity.ok("Book returned successfully");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
 }
