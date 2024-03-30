@@ -22,4 +22,26 @@ export class BookService {
   getAllBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.apiUrl}`);
   }
+
+  searchBooksByIsbn(isbn: string): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.apiUrl}/search/isbn/${isbn}`);
+  }
+
+  searchBooksByTitle(title: string): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.apiUrl}/search/title/${title}`);
+  }
+
+  searchBooksByAuthor(author: string): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.apiUrl}/search/author/${author}`);
+  }
+
+  searchBooksByGenre(genre: string): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.apiUrl}/search/genre/${genre}`);
+  }
+
+  searchBooksByPublicationYear(publicationYear: number): Observable<Book[]> {
+    return this.http.get<Book[]>(
+      `${this.apiUrl}/search/publicationYear/${publicationYear}`
+    );
+  }
 }

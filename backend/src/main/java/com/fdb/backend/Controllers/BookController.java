@@ -47,5 +47,30 @@ public class BookController {
         }
     }
 
+    @GetMapping("/search/isbn/{isbn}")
+    public List<Book> searchBooksByIsbn(@PathVariable Long isbn) {
+        return bookService.searchBooksByIsbn(isbn);
+    }
+
+    @GetMapping("/search/title/{title}")
+    public List<Book> searchBooksByTitle(@PathVariable String title) {
+        return bookService.searchBooksByTitle(title);
+    }
+
+    @GetMapping("/search/author/{author}")
+    public List<Book> searchBooksByAuthor(@PathVariable String author) {
+        return bookService.searchBooksByAuthor(author);
+    }
+
+    @GetMapping("/search/genre/{genre}")
+    public List<Book> searchBooksByGenre(@PathVariable String genre) {
+        return bookService.searchBooksByGenre(genre);
+    }
+
+    @GetMapping("/search/publicationYear/{publicationYear}")
+    public List<Book> searchBooksByPublicationYear(@PathVariable Integer publicationYear) {
+        return bookService.searchBooksByPublicationYear(publicationYear);
+    }
+
 
 }

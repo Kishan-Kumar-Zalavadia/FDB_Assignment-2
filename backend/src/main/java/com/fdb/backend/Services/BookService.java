@@ -28,4 +28,30 @@ public class BookService {
     public void updateBook(Book book) {
         bookRepository.save(book);
     }
+
+    public List<Book> searchBooksByIsbn(Long isbn) {
+        // Implement search by ISBN logic using bookRepository
+        return bookRepository.findByIsbn(isbn);
+    }
+
+    public List<Book> searchBooksByTitle(String title) {
+        // Implement search by title logic using bookRepository
+        return bookRepository.findByTitleContainingIgnoreCase(title);
+    }
+
+    public List<Book> searchBooksByAuthor(String author) {
+        // Implement search by author logic using bookRepository
+        return bookRepository.findByAuthorContainingIgnoreCase(author);
+    }
+
+    public List<Book> searchBooksByGenre(String genre) {
+        // Implement search by genre logic using bookRepository
+        return bookRepository.findByGenreContainingIgnoreCase(genre);
+    }
+
+    public List<Book> searchBooksByPublicationYear(Integer publicationYear) {
+        // Implement search by publication year logic using bookRepository
+        return bookRepository.findByPublicationYear(publicationYear);
+    }
+
 }

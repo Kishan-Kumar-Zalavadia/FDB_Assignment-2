@@ -1,4 +1,4 @@
-<div class="book-container" *ngFor="let book of books">
+<!-- <div class="book-container" *ngFor="let book of books">
   <div class="book-details">
     <h2>{{ book.title }}</h2>
     <p><strong>ISBN:</strong> {{ book.isbn }}</p>
@@ -13,5 +13,39 @@
       <strong>Availability:</strong>
       {{ book.available ? "Available" : "Not Available" }}
     </p>
+  </div>
+</div> -->
+
+<div class="search-form">
+  <input type="text" [(ngModel)]="searchQuery" placeholder="Search Query..." />
+  <button (click)="searchByIsbn()">Search by ISBN</button>
+  <button (click)="searchByTitle()">Search by Title</button>
+  <button (click)="searchByAuthor()">Search by Author</button>
+  <button (click)="searchByGenre()">Search by Genre</button>
+  <button (click)="searchByPublicationYear()">
+    Search by Publication Year
+  </button>
+  <button (click)="clearSearch()">Clear Search</button>
+</div>
+
+<div class="search-results">
+  <div *ngFor="let book of searchResults" class="book-item">
+    <div class="book-details">
+      <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+      <p><strong>Title:</strong> {{ book.title }}</p>
+      <p><strong>Author:</strong> {{ book.author }}</p>
+      <p><strong>Genre:</strong> {{ book.genre }}</p>
+      <p><strong>Publication Year:</strong> {{ book.publicationYear }}</p>
+      <p>
+        <strong>Availability:</strong>
+        <span
+          [ngClass]="{
+            available: book.available,
+            unavailable: !book.available
+          }"
+          >{{ book.available ? "Available" : "Not Available" }}</span
+        >
+      </p>
+    </div>
   </div>
 </div>
