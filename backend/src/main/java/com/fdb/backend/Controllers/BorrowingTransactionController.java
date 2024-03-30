@@ -32,17 +32,27 @@ public class BorrowingTransactionController {
     }
 
 
-    @PostMapping("/borrow/{userId}/{bookIsbn}")
-    public ResponseEntity<?> addBorrowingTransaction(
-            @PathVariable Long userId,
-            @PathVariable Long bookIsbn,
-            @RequestBody BorrowingTransaction borrowingTransaction
-    ) {
-        try {
-            BorrowingTransaction addedTransaction = borrowingTransactionService.addBorrowingTransaction(userId, bookIsbn, borrowingTransaction);
-            return new ResponseEntity<>(addedTransaction, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
+//    @PostMapping("/borrow/{userId}/{bookIsbn}")
+//    public ResponseEntity<?> addBorrowingTransaction(
+//            @PathVariable Long userId,
+//            @PathVariable Long bookIsbn,
+//            @RequestBody BorrowingTransaction borrowingTransaction
+//    ) {
+//        try {
+//            BorrowingTransaction addedTransaction = borrowingTransactionService.addBorrowingTransaction(userId, bookIsbn, borrowingTransaction);
+//            return new ResponseEntity<>(addedTransaction, HttpStatus.CREATED);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+//        }
+//    }
+
+//    @PostMapping("/addBorrowingTransaction")
+//    public ResponseEntity<?> addBorrowingTransaction(@RequestBody BorrowingTransaction borrowingTransaction) {
+//        return borrowingTransactionService.addBorrowingTransaction(borrowingTransaction);
+//    }
+
+    @PostMapping("/addBorrowingTransaction")
+    public ResponseEntity<?> addBorrowingTransaction(@RequestBody BorrowingTransaction borrowingTransaction) {
+        return borrowingTransactionService.addBorrowingTransaction(borrowingTransaction);
     }
 }
