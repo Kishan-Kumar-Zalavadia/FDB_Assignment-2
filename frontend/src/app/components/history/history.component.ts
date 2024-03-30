@@ -15,6 +15,7 @@ export class HistoryComponent {
   borrowingHistory: BorrowingTransaction[] = [];
   seeUser = new User();
   seeBook = new Book();
+  msg = '';
 
   constructor(
     private borrowingService: BorrowerService,
@@ -57,6 +58,8 @@ export class HistoryComponent {
           this.borrowingHistory = history;
         });
     }
+    if(this.borrowingHistory.length == 0)
+    this.msg = 'No history available'
   }
 
   viewUser(userId: number): void {
