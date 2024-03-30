@@ -45,6 +45,7 @@ export class BorrowBookComponent {
       this.bookService.getBookById(form.value.bookIsbn).subscribe(
         (response) => {
           if (response.available == false) {
+            this.msg = '';
             this.errormsg = 'Book not available';
           } else {
             this.errormsg = '';
