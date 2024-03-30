@@ -1,22 +1,24 @@
+<div class="background"></div>
+
 <div class="borrowing-history-container">
   <div class="search-container">
     <div class="search-form">
-      <div class="search-label">
+      <!-- <div class="search-label">
         <label for="searchType">Search By:</label>
-      </div>
+      </div> -->
+      <input
+        type="text"
+        id="searchValue"
+        [(ngModel)]="searchValue"
+        placeholder="Enter search value"
+      />
       <div class="search-options">
         <select id="searchType" [(ngModel)]="searchType">
-          <option value="userId">User ID</option>
-          <option value="userName">User Name</option>
-          <option value="email">Email</option>
-          <option value="contactNumber">Contact Number</option>
+          <option value="userId">Search by User ID</option>
+          <option value="userName">Search by User Name</option>
+          <option value="email">Search by Email</option>
+          <option value="contactNumber">Search by Contact Number</option>
         </select>
-        <input
-          type="text"
-          id="searchValue"
-          [(ngModel)]="searchValue"
-          placeholder="Enter search value"
-        />
       </div>
       <div class="search-button">
         <button (click)="searchBorrowingHistory()" class="search-button">

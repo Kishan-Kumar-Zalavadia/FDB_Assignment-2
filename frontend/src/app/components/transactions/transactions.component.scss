@@ -1,3 +1,15 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../../assets/lms.jpg");
+  background-size: cover;
+  backdrop-filter: blur(8px);
+  z-index: -1;
+}
+
 .transaction-list {
   margin: 20px;
   display: grid;
@@ -8,6 +20,9 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 20px;
+
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
 
     .transaction-details {
       display: grid;
