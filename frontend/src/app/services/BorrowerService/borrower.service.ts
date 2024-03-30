@@ -29,9 +29,22 @@ export class BorrowerService {
   addBorrowingTransaction(
     borrowingTransaction: BorrowingTransaction
   ): Observable<any> {
-    console.log('From service: '+ JSON.stringify(borrowingTransaction));
+    console.log('From service: ' + JSON.stringify(borrowingTransaction));
     return this._http.post<any>(
       `${this.apiUrl}/borrowing-transactions/addBorrowingTransaction`,
+      borrowingTransaction
+    );
+  }
+
+  getAllTransactions(): Observable<BorrowingTransaction[]> {
+    return this._http.get<BorrowingTransaction[]>(
+      `${this.apiUrl}/borrowing-transactions`
+    );
+  }
+
+  returnBook(borrowingTransaction: BorrowingTransaction) {
+    return this._http.put(
+      `${this.apiUrl}/borrowing-transactions/return`,
       borrowingTransaction
     );
   }

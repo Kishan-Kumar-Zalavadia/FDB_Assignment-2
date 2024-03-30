@@ -1,0 +1,54 @@
+<!-- <div class="transaction-list">
+  <div *ngFor="let transaction of transactions" class="transaction-item">
+    <div class="transaction-details">
+      <p><strong>Transaction ID:</strong> {{ transaction.id }}</p>
+      <p>
+        <strong>Borrowing Date:</strong> {{ transaction.borrowingDate | date }}
+      </p>
+      <p><strong>Return Date:</strong> {{ transaction.returnDate | date }}</p>
+      <p><strong>User ID:</strong> {{ transaction.user.userID }}</p>
+      <p><strong>User Name:</strong> {{ transaction.user.userName }}</p>
+      <p><strong>Book ISBN:</strong> {{ transaction.book.isbn }}</p>
+      <p><strong>Book Title:</strong> {{ transaction.book.title }}</p>
+    </div>
+  </div>
+</div> -->
+<!-- 
+<div class="transaction-list">
+  <div *ngFor="let transaction of transactions" class="transaction-item">
+    <div class="transaction-details">
+      <p><strong>Transaction ID:</strong> {{ transaction.id }}</p>
+      <p>
+        <strong>Borrowing Date:</strong> {{ transaction.borrowingDate | date }}
+      </p>
+      <p><strong>Return Date:</strong> {{ transaction.returnDate | date }}</p>
+      <p><strong>User ID:</strong> {{ transaction.user.userID }}</p>
+      <p><strong>Book ISBN:</strong> {{ transaction.book.isbn }}</p>
+      <button (click)="viewUser(transaction.user.userID)">View User</button>
+      <button (click)="viewBook(transaction.book.isbn)">View Book</button>
+    </div>
+  </div>
+</div> -->
+
+<div class="transaction-list">
+  <div *ngFor="let transaction of transactions" class="transaction-item">
+    <div class="transaction-details">
+      <p><strong>Transaction ID:</strong> {{ transaction.id }}</p>
+      <p>
+        <strong>Borrowing Date:</strong> {{ transaction.borrowingDate | date }}
+      </p>
+      <!-- <p><strong>Return Date:</strong> {{ transaction.returnDate ? transaction.returnDate | date : 'Not returned' }}</p> -->
+      <p><strong>User ID:</strong> {{ transaction.user.userID }}</p>
+      <p><strong>Book ISBN:</strong> {{ transaction.book.isbn }}</p>
+      <button (click)="viewUser(transaction.user.userID)">View User</button>
+      <button (click)="viewBook(transaction.book.isbn)">View Book</button>
+      <!-- <button *ngIf="!transaction.returnDate" (click)="returnBook(transaction.id)" class="return-button">Return</button> -->
+      <div *ngIf="transaction.returnDate == null">
+      <label for="myDate">Select return date:</label>
+        <input type="date" id="myDate" [(ngModel)]="selectedDate" />
+        <button (click)="returnBook(selectedDate, transaction)" [disabled]="!selectedDate">Return Book</button>
+
+      </div>
+    </div>
+  </div>
+</div>

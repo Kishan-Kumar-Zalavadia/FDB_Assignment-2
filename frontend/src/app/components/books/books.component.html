@@ -1,0 +1,17 @@
+<div class="book-container" *ngFor="let book of books">
+  <div class="book-details">
+    <h2>{{ book.title }}</h2>
+    <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <p><strong>Genre:</strong> {{ book.genre }}</p>
+    <p *ngIf="book.available" class="available"><strong></strong> Available</p>
+    <p *ngIf="!book.available" class="not-available">
+      <strong></strong> Not Available
+    </p>
+    <p><strong>Publication Year:</strong> {{ book.publicationYear }}</p>
+    <p>
+      <strong>Availability:</strong>
+      {{ book.available ? "Available" : "Not Available" }}
+    </p>
+  </div>
+</div>

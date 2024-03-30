@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { AddBorrowerComponent } from './components/add-borrower/add-borrower.component';
 import { BorrowBookComponent } from './components/borrow-book/borrow-book.component';
+import { BooksComponent } from './components/books/books.component';
+import { TransactionsComponent } from './components/transactions/transactions.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { BorrowBookComponent } from './components/borrow-book/borrow-book.compon
     AddBookComponent,
     AddBorrowerComponent,
     BorrowBookComponent,
+    BooksComponent,
+    TransactionsComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,8 @@ import { LoginComponent } from './components/login/login.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { AddBorrowerComponent } from './components/add-borrower/add-borrower.component';
 import { BorrowBookComponent } from './components/borrow-book/borrow-book.component';
+import { BooksComponent } from './components/books/books.component';
+import { TransactionsComponent } from './components/transactions/transactions.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -17,6 +19,8 @@ const routes: Routes = [
       { path: 'addBook', component: AddBookComponent },
       { path: 'addBorrower', component: AddBorrowerComponent },
       { path: 'borrowBook', component: BorrowBookComponent },
+      { path: 'books', component: BooksComponent },
+      { path: 'transactions', component: TransactionsComponent },
     ],
   },
 ];
