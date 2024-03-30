@@ -55,6 +55,7 @@ public class BorrowingTransactionService {
         // Update book availability status
         borrowedBook.setAvailable(false);
         bookService.updateBook(borrowedBook);
+        
 
 //        return borrowingTransactionRepository.save(borrowingTransaction);
         return "Success";
