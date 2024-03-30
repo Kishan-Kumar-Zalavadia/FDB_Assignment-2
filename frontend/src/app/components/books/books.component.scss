@@ -33,45 +33,45 @@
     }
   }
 
-  
   .search-results {
-  width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
 
-  .book-item {
-    background-color: #f9f9f9;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
+    .book-item {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 10px;
+      border: 1px solid #ccc;
+      padding: 10px;
 
-    .book-details-container {
-      .book-details {
-        .book-detail {
-          display: flex;
-          justify-content: space-between;
+      .book-details-container {
+        .book-details {
+          width: 200%;
+          display: grid;
+          grid-template-columns: max-content 1fr;
+          gap: 5px;
           align-items: center;
-          margin-bottom: 5px;
 
-          label {
-            font-weight: bold;
-          }
+          .book-detail {
+            display: contents;
 
-          span {
-            flex: 1;
-            margin-left: 10px;
-          }
+            label {
+              font-weight: bold;
+            }
 
-          .available {
-            color: green;
-          }
+            span {
+              &.available {
+                color: green;
+              }
 
-          .unavailable {
-            color: red;
+              &.unavailable {
+                color: red;
+              }
+            }
           }
         }
       }
     }
   }
 }
-
-}
-
