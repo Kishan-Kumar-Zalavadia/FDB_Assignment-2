@@ -1,5 +1,6 @@
 <div class="background"></div>
 <div class="transaction-list">
+  <h2 *ngIf="transactions.length == 0">No Transaction available</h2>
   <div *ngFor="let transaction of transactions" class="transaction-item">
     <div class="transaction-details">
       <p><strong>Transaction ID:</strong> {{ transaction.id }}</p>
@@ -39,7 +40,7 @@
       <p><strong>Email:</strong> {{ seeUser?.emailID }}</p>
       <p><strong>Name:</strong> {{ seeUser?.userName }}</p>
       <p><strong>Contact Number:</strong> {{ seeUser?.contactNumber }}</p>
-      <p><strong>Admin:</strong> {{ seeUser?.admin ? 'Yes' : 'No' }}</p>
+      <p><strong>Admin:</strong> {{ seeUser?.admin ? "Yes" : "No" }}</p>
       <button (click)="closeUserPopup()">Close</button>
     </div>
   </div>
@@ -55,8 +56,8 @@
       <p><strong>Author:</strong> {{ seeBook?.author }}</p>
       <p><strong>Genre:</strong> {{ seeBook?.genre }}</p>
       <p><strong>Publication Year:</strong> {{ seeBook?.publicationYear }}</p>
-      <p><strong>Available:</strong> {{ seeBook?.available ? 'Yes' : 'No' }}</p>
-      
+      <p><strong>Available:</strong> {{ seeBook?.available ? "Yes" : "No" }}</p>
+
       <button (click)="closeBookPopup()">Close</button>
     </div>
   </div>

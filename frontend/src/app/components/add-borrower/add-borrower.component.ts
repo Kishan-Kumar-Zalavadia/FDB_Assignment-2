@@ -26,6 +26,7 @@ export class AddBorrowerComponent {
         console.log('Responce recived' + this.user.userID);
         this.errormsg = '';
         this.msg = 'Borrower Added Successful';
+        AddBorrowerForm.reset();
       },
       (error) => {
         console.log('Exception occured');
