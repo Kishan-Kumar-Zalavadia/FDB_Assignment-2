@@ -15,6 +15,7 @@
         <label for="myDate">Select return date:</label>
         <input type="date" id="myDate" [(ngModel)]="selectedDate" />
         <button
+          class="return-button"
           (click)="returnBook(selectedDate, transaction)"
           [disabled]="!selectedDate"
         >

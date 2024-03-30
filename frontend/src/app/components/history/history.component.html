@@ -53,9 +53,14 @@
               <span>Return Date:</span>
             </div>
             <div class="detail-value">
-              <p>{{ transaction.returnDate | date }}</p>
+              <p *ngIf="transaction.returnDate != null">
+                {{ transaction.returnDate | date }}
+              </p>
+              <p *ngIf="transaction.returnDate == null">Book not returned</p>
             </div>
           </div>
+          <button (click)="viewUser(transaction.user.userID)">View User</button>
+          <button (click)="viewBook(transaction.book.isbn)">View Book</button>
         </div>
       </div>
     </div>

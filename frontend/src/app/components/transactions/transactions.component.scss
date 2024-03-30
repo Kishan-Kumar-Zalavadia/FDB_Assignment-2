@@ -21,6 +21,7 @@
         align-items: center;
 
         strong {
+          width: 110px;
           font-weight: bold;
         }
       }
@@ -41,6 +42,7 @@
       }
 
       .return-button {
+        margin-top: 5px;
         background-color: #28a745;
 
         &:hover {
