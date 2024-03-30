@@ -1,34 +1,57 @@
-<div class="search-form">
-  <input type="text" [(ngModel)]="searchQuery" placeholder="Search Query..." />
-  <select [(ngModel)]="selectedOption">
-    <option value="isbn">Search by ISBN</option>
-    <option value="title">Search by Title</option>
-    <option value="author">Search by Author</option>
-    <option value="genre">Search by Genre</option>
-    <option value="publicationYear">Search by Publication Year</option>
-  </select>
-  <button (click)="search()">Search</button>
-  <button (click)="clearSearch()">Clear Search</button>
-</div>
+<div class="main-container">
+  <div class="search-form">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      placeholder="Search Query..."
+    />
+    <select [(ngModel)]="selectedOption">
+      <option value="isbn">Search by ISBN</option>
+      <option value="title">Search by Title</option>
+      <option value="author">Search by Author</option>
+      <option value="genre">Search by Genre</option>
+      <option value="publicationYear">Search by Publication Year</option>
+    </select>
+    <button (click)="search()">Search</button>
+    <button (click)="clearSearch()">Clear Search</button>
+  </div>
 
-<div class="search-results">
-  <div *ngFor="let book of searchResults" class="book-item">
-    <div class="book-details">
-      <p><strong>ISBN:</strong> {{ book.isbn }}</p>
-      <p><strong>Title:</strong> {{ book.title }}</p>
-      <p><strong>Author:</strong> {{ book.author }}</p>
-      <p><strong>Genre:</strong> {{ book.genre }}</p>
-      <p><strong>Publication Year:</strong> {{ book.publicationYear }}</p>
-      <p>
-        <strong>Availability:</strong>
-        <span
-          [ngClass]="{
-            available: book.available,
-            unavailable: !book.available
-          }"
-          >{{ book.available ? "Available" : "Not Available" }}</span
-        >
-      </p>
+  <div class="search-results">
+    <div *ngFor="let book of searchResults" class="book-item">
+      <div class="book-details-container">
+        <div class="book-details">
+          <div class="book-detail">
+            <label>ISBN:</label>
+            <span>{{ book.isbn }}</span>
+          </div>
+          <div class="book-detail">
+            <label>Title:</label>
+            <span>{{ book.title }}</span>
+          </div>
+          <div class="book-detail">
+            <label>Author:</label>
+            <span>{{ book.author }}</span>
+          </div>
+          <div class="book-detail">
+            <label>Genre:</label>
+            <span>{{ book.genre }}</span>
+          </div>
+          <div class="book-detail">
+            <label>Publication Year:</label>
+            <span>{{ book.publicationYear }}</span>
+          </div>
+          <div class="book-detail">
+            <label>Availability:</label>
+            <span
+              [ngClass]="{
+                available: book.available,
+                unavailable: !book.available
+              }"
+              >{{ book.available ? "Available" : "Not Available" }}</span
+            >
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
