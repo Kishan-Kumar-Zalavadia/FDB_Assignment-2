@@ -9,6 +9,7 @@ import { BorrowBookComponent } from './components/borrow-book/borrow-book.compon
 import { BooksComponent } from './components/books/books.component';
 import { TransactionsComponent } from './components/transactions/transactions.component';
 import { HistoryComponent } from './components/history/history.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     children: [
+      { path: '', component: LandingPageComponent },
       { path: 'addBook', component: AddBookComponent },
       { path: 'addBorrower', component: AddBorrowerComponent },
       { path: 'borrowBook', component: BorrowBookComponent },
