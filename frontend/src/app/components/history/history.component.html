@@ -4,15 +4,28 @@
   </div>
   <div class="search-container">
     <div class="search-form">
-      <label for="searchType">Search By:</label>
-      <select id="searchType" [(ngModel)]="searchType">
-        <option value="userId">User ID</option>
-        <option value="userName">User Name</option>
-        <option value="email">Email</option>
-        <option value="contactNumber">Contact Number</option>
-      </select>
-      <input type="text" id="searchValue" [(ngModel)]="searchValue" placeholder="Enter search value" />
-      <button (click)="searchBorrowingHistory()" class="search-button">Search</button>
+      <div class="search-label">
+        <label for="searchType">Search By:</label>
+      </div>
+      <div class="search-options">
+        <select id="searchType" [(ngModel)]="searchType">
+          <option value="userId">User ID</option>
+          <option value="userName">User Name</option>
+          <option value="email">Email</option>
+          <option value="contactNumber">Contact Number</option>
+        </select>
+        <input
+          type="text"
+          id="searchValue"
+          [(ngModel)]="searchValue"
+          placeholder="Enter search value"
+        />
+      </div>
+      <div class="search-button">
+        <button (click)="searchBorrowingHistory()" class="search-button">
+          Search
+        </button>
+      </div>
     </div>
   </div>
   <div class="history-container" *ngIf="borrowingHistory">
@@ -20,16 +33,28 @@
       <div *ngFor="let transaction of borrowingHistory" class="history-item">
         <div class="history-details">
           <div class="detail-item">
-            <span>Book:</span>
-            <p>{{ transaction.book.title }}</p>
+            <div class="detail-label">
+              <span>Book:</span>
+            </div>
+            <div class="detail-value">
+              <p>{{ transaction.book.title }}</p>
+            </div>
           </div>
           <div class="detail-item">
-            <span>Borrowing Date:</span>
-            <p>{{ transaction.borrowingDate | date }}</p>
+            <div class="detail-label">
+              <span>Borrowing Date:</span>
+            </div>
+            <div class="detail-value">
+              <p>{{ transaction.borrowingDate | date }}</p>
+            </div>
           </div>
           <div class="detail-item">
-            <span>Return Date:</span>
-            <p>{{ transaction.returnDate | date }}</p>
+            <div class="detail-label">
+              <span>Return Date:</span>
+            </div>
+            <div class="detail-value">
+              <p>{{ transaction.returnDate | date }}</p>
+            </div>
           </div>
         </div>
       </div>
