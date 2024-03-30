@@ -44,13 +44,6 @@ h2 {
       border-color: #dc3545;
     }
   }
-
-  .text-danger {
-    color: #dc3545;
-    &.d-none {
-      display: none;
-    }
-  }
 }
 
 .btn {
@@ -68,5 +61,11 @@ h2 {
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+}
+.text-danger {
+  color: #dc3545;
+  &.d-none {
+    display: none;
   }
 }
