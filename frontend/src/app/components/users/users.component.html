@@ -1,12 +1,27 @@
 <div class="background"></div>
 <div class="user-list">
-  <ul>
-    <li *ngFor="let user of users">
-      <p><strong>User ID:</strong> {{ user.userID }} <br /></p>
-      <p><strong>Email:</strong> {{ user.emailID }} <br /></p>
-      <p><strong>Name:</strong> {{ user.userName }} <br /></p>
-      <p><strong>Contact Number:</strong> {{ user.contactNumber }} <br /></p>
-      <p><strong>Admin:</strong> {{ user.admin ? "Yes" : "No" }} <br /></p>
-    </li>
-  </ul>
+  <div class="user-item" *ngFor="let user of users">
+    <div class="user-details">
+      <div class="detail">
+        <strong>User ID:</strong>
+        <span>{{ user.userID }}</span>
+      </div>
+      <div class="detail">
+        <strong>Email:</strong>
+        <span>{{ user.emailID }}</span>
+      </div>
+      <div class="detail">
+        <strong>Name:</strong>
+        <span>{{ user.userName }}</span>
+      </div>
+      <div class="detail">
+        <strong>Contact Number:</strong>
+        <span>{{ user.contactNumber }}</span>
+      </div>
+      <div class="detail">
+        <strong>Admin:</strong>
+        <span>{{ user.admin ? "Yes" : "No" }}</span>
+      </div>
+    </div>
+  </div>
 </div>
