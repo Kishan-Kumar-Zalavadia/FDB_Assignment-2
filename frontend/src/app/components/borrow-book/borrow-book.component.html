@@ -3,6 +3,7 @@
     <h2>Borrow Book</h2>
     <form #borrowForm="ngForm" (ngSubmit)="onSubmit(borrowForm)">
       <small class="text-success">{{ msg }}</small>
+      <small class="text-danger">{{ errormsg }}</small>
       <div class="form-group">
         <label for="borrowerId">Borrower ID:</label>
         <input

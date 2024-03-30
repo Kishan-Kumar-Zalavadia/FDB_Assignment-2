@@ -26,7 +26,7 @@ public class BorrowingTransactionController {
     }
 
     @PostMapping("/borrowBook")
-    public BorrowingTransaction borrowBook(@RequestBody BorrowingTransaction borrowingTransaction) {
+    public String borrowBook(@RequestBody BorrowingTransaction borrowingTransaction) {
         return borrowingTransactionService.borrowBook(borrowingTransaction);
     }
 

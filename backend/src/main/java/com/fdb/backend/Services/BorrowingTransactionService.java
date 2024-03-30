@@ -31,37 +31,22 @@ public class BorrowingTransactionService {
         return borrowingTransactionRepository.findById(id).orElse(null);
     }
 
-
-//    public BorrowingTransaction borrowBook(BorrowingTransaction borrowingTransaction) {
-//        // Set borrowing date to current date
-//        borrowingTransaction.setBorrowingDate(LocalDate.now());
-//
-//        // Update book availability status
-//        Book borrowedBook = bookService.getBookById(borrowingTransaction.getBookIsbn());
-//        if (borrowedBook != null) {
-//            borrowedBook.setAvailable(false);
-//            bookService.updateBook(borrowedBook);
-//        }
-//
-//        return borrowingTransactionRepository.save(borrowingTransaction);
-//    }
-
-    public BorrowingTransaction borrowBook(BorrowingTransaction borrowingTransaction) {
+    public String borrowBook(BorrowingTransaction borrowingTransaction) {
         // Check if borrowerId exists in User table
         Optional<User> borrower = userService.getUserById(borrowingTransaction.getBorrowerId());
         if (!borrower.isPresent()) {
-            throw new RuntimeException("Borrower with ID " + borrowingTransaction.getBorrowerId() + " not found");
+            return "Borrower not found";
         }
 
         // Check if bookIsbn exists in Book table
         Book borrowedBook = bookService.getBookById(borrowingTransaction.getBookIsbn());
         if (borrowedBook == null) {
-            throw new RuntimeException("Book with ISBN " + borrowingTransaction.getBookIsbn() + " not found");
+            return "Book not found";
         }
 
         // Check if the book is available
         if (!borrowedBook.isAvailable()) {
-            throw new RuntimeException("Book with ISBN " + borrowingTransaction.getBookIsbn() + " is not available");
+            return "Book is not available";
         }
 
         // Set borrowing date to current date
@@ -71,8 +56,10 @@ public class BorrowingTransactionService {
         borrowedBook.setAvailable(false);
         bookService.updateBook(borrowedBook);
 
-        return borrowingTransactionRepository.save(borrowingTransaction);
+//        return borrowingTransactionRepository.save(borrowingTransaction);
+        return "Success";
     }
+
 
 
 }
