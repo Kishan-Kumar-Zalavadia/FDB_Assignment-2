@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationTyepe.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userID;
     private String emailID;
     private String userName;
