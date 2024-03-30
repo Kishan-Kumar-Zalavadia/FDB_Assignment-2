@@ -67,4 +67,9 @@ public class BorrowingTransactionController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
+
+    @GetMapping("/user/{userId}")
+    public List<BorrowingTransaction> getBorrowingHistoryByUserId(@PathVariable Long userId) {
+        return borrowingTransactionService.getBorrowingHistoryByUserId(userId);
+    }
 }

@@ -5,7 +5,9 @@ import com.fdb.backend.Entities.BorrowingTransaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface BorrowingTransactionRepository extends JpaRepository<BorrowingTransaction, Long> {
-    // You can add custom query methods if needed
+    List<BorrowingTransaction> findByUserUserID(Long userId);
 }

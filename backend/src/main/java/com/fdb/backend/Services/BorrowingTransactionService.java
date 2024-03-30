@@ -151,4 +151,8 @@ public class BorrowingTransactionService {
         bookService.updateBook(book);
     }
 
+    public List<BorrowingTransaction> getBorrowingHistoryByUserId(Long userId) {
+        return borrowingTransactionRepository.findByUserUserID(userId);
+    }
+
 }
