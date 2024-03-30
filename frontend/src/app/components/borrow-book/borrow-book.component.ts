@@ -32,7 +32,6 @@ export class BorrowBookComponent {
       this.userService.getUserByIDFromRemote(form.value.borrowerId).subscribe(
         (response) => {
           this.errormsg = '';
-          // console.log(response);
           this.borrower = response;
         },
         (error) => {
@@ -41,6 +40,8 @@ export class BorrowBookComponent {
         }
       );
 
+      // console.log('Borrower set: ' + JSON.stringify(this.borrower));
+
       this.bookService.getBookById(form.value.bookIsbn).subscribe(
         (response) => {
           if (response.available == false) {
@@ -48,7 +49,7 @@ export class BorrowBookComponent {
           } else {
             this.errormsg = '';
             this.borrowingBook = response;
-            this.borrowingTransaction.borrower = this.borrower;
+            this.borrowingTransaction.user = this.borrower;
             this.borrowingTransaction.book = this.borrowingBook;
             this.borrowingTransaction.borrowingDate = form.value.borrowingDate;
             this.borrowBook(this.borrowingTransaction);
@@ -64,10 +65,8 @@ export class BorrowBookComponent {
     }
   }
 
-
- 
   borrowBook(borrowingTransaction: BorrowingTransaction) {
-    console.log("Borrow Book: "+JSON.stringify(borrowingTransaction));
+    console.log('Borrow Book: ' + JSON.stringify(borrowingTransaction));
     this.borrowerService
       .addBorrowingTransaction(borrowingTransaction)
       .subscribe(

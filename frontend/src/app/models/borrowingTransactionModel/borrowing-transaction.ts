@@ -7,6 +7,6 @@ export class BorrowingTransaction {
     // bookIsbn!: number;
     borrowingDate!: Date;
     returnDate!: Date
-    borrower!: User;
+    user!: User;
     book!: Book;
 }
