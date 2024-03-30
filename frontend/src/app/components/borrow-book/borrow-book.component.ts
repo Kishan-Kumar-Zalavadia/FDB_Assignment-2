@@ -51,7 +51,6 @@ export class BorrowBookComponent {
             this.borrowingTransaction.borrower = this.borrower;
             this.borrowingTransaction.book = this.borrowingBook;
             this.borrowingTransaction.borrowingDate = form.value.borrowingDate;
-            console.log(JSON.stringify(this.borrowingTransaction));
             this.borrowBook(this.borrowingTransaction);
             this.msg = 'Book assigned';
             // console.log(response);
@@ -66,8 +65,9 @@ export class BorrowBookComponent {
   }
 
 
-
+ 
   borrowBook(borrowingTransaction: BorrowingTransaction) {
+    console.log("Borrow Book: "+JSON.stringify(borrowingTransaction));
     this.borrowerService
       .addBorrowingTransaction(borrowingTransaction)
       .subscribe(
