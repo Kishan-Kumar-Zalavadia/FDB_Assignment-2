@@ -18,8 +18,14 @@ public class BorrowingTransaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long borrowerId;
-    private Long bookIsbn;
     private LocalDate borrowingDate;
     private LocalDate returnDate;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToOne
+    @JoinColumn(name = "book_isbn")
+    private Book book;
 }

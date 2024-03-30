@@ -17,26 +17,13 @@ export class BorrowerService {
     return this._http.post<any>(`${this.apiUrl}/users/register`, user);
   }
 
-  // borrowBook(
-  //   borrowingTransaction: BorrowingTransaction
-  // ): Observable<String> {
-  //   return this._http.post<String>(
-  //     `${this.apiUrl}/borrowing-transactions/borrowBook`,
-  //     borrowingTransaction
-  //   );
-  // }
 
-  borrowBook(borrowingTransaction: BorrowingTransaction): Observable<any> {
-    return this._http
-      .post<any>(
-        `${this.apiUrl}/borrowing-transactions/borrowBook`,
-        borrowingTransaction
-      )
-      .pipe(catchError(this.handleError));
-  }
-
-  private handleError(error: HttpErrorResponse) {
-    console.error('An error occurred:', error);
-    return throwError(error.error); // Return the error object
+  addBorrowingTransaction(
+    transaction: BorrowingTransaction
+  ): Observable<BorrowingTransaction> {
+    return this._http.post<BorrowingTransaction>(
+      `${this.apiUrl}/borrowing-transactions/borrowBook`,
+      transaction
+    );
   }
 }

@@ -3,6 +3,8 @@ package com.fdb.backend.Controllers;
 import com.fdb.backend.Entities.BorrowingTransaction;
 import com.fdb.backend.Services.BorrowingTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,10 +27,11 @@ public class BorrowingTransactionController {
         return borrowingTransactionService.getBorrowingTransactionById(id);
     }
 
+
     @PostMapping("/borrowBook")
-    public String borrowBook(@RequestBody BorrowingTransaction borrowingTransaction) {
-        return borrowingTransactionService.borrowBook(borrowingTransaction);
+    public ResponseEntity<?> addBorrowingTransaction(@RequestBody BorrowingTransaction borrowingTransaction) {
+        System.out.println("INPUT: "+ borrowingTransaction.getUser().getUserID());
+        System.out.println("INPUT: "+ borrowingTransaction.getBook().getIsbn());
+        return borrowingTransactionService.addBorrowingTransaction(borrowingTransaction);
     }
-
-
 }

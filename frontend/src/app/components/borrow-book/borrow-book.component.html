@@ -1,3 +1,51 @@
+<!-- <div class="main-container">
+  <div class="container">
+    <h2>Borrow Book</h2>
+    <form #borrowForm="ngForm" (ngSubmit)="onSubmit(borrowForm)">
+      <small class="text-success">{{ msg }}</small>
+      <small class="text-danger">{{ errormsg }}</small>
+      <div class="form-group">
+        <label for="borrowerId">Borrower ID:</label>
+        <input
+          type="number"
+          class="form-control"
+          name="borrowerId"
+          [(ngModel)]="borrowerId"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="bookIsbn">Book ISBN:</label>
+        <input
+          type="number"
+          class="form-control"
+          name="bookIsbn"
+          [(ngModel)]="bookIsbn"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="borrowingDate">Borrowing Date:</label>
+        <input
+          type="date"
+          class="form-control"
+          name="borrowingDate"
+          [(ngModel)]="borrowingDate"
+          required
+        />
+      </div>
+
+      <button
+        [disabled]="borrowForm.form.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Borrow Book
+      </button>
+    </form>
+  </div>
+</div> -->
+
 <div class="main-container">
   <div class="container">
     <h2>Borrow Book</h2>
@@ -10,7 +58,8 @@
           type="number"
           class="form-control"
           name="borrowerId"
-          [(ngModel)]="borrowingTransaction.borrowerId"
+          #borrowerIdInput
+          ngModel
           required
         />
       </div>
@@ -20,7 +69,8 @@
           type="number"
           class="form-control"
           name="bookIsbn"
-          [(ngModel)]="borrowingTransaction.bookIsbn"
+          #bookIsbnInput
+          ngModel
           required
         />
       </div>
@@ -30,7 +80,8 @@
           type="date"
           class="form-control"
           name="borrowingDate"
-          [(ngModel)]="borrowingTransaction.borrowingDate"
+          #borrowingDateInput
+          ngModel
           required
         />
       </div>

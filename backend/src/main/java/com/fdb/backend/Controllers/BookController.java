@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -28,9 +29,12 @@ public class BookController {
 
     @GetMapping("/{id}")
     public Book getBookById(@PathVariable Long id) {
-        return bookService.getBookById(id);
+        Book book = bookService.getBookById(id);
+        if (book == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found");
+        }
+        return book;
     }
-
     @PostMapping("/addBook")
     public ResponseEntity<?> addBook(@RequestBody Book book) {
         // Check if the book already exists

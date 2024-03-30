@@ -11,6 +11,10 @@ export class BookService {
 
   constructor(private http: HttpClient) {}
 
+  getBookById(isbn: number): Observable<Book> {
+    return this.http.get<Book>(`${this.apiUrl}/${isbn}`);
+  }
+
   addBook(book: Book): Observable<Book> {
     return this.http.post<Book>(`${this.apiUrl}/addBook`, book);
   }

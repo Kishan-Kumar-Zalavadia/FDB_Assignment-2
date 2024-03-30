@@ -4,7 +4,10 @@ import com.fdb.backend.Entities.Book;
 import com.fdb.backend.Entities.BorrowingTransaction;
 import com.fdb.backend.Entities.User;
 import com.fdb.backend.Repositories.BorrowingTransactionRepository;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -27,39 +30,68 @@ public class BorrowingTransactionService {
         return borrowingTransactionRepository.findAll();
     }
 
+//    public ResponseEntity<?> addBorrowingTransaction(BorrowingTransaction borrowingTransaction) {
+//        // Check if the user exists
+//        User user = userService.getUserById(borrowingTransaction.getUser().getUserID());
+//        if (user == null) {
+//            return new ResponseEntity<>("User with ID " + borrowingTransaction.getUser().getUserID() + " not found", HttpStatus.BAD_REQUEST);
+//        }
+//
+//        // Check if the book exists
+//        Book book = bookService.getBookById(borrowingTransaction.getBook().getIsbn());
+//        if (book == null) {
+//            return new ResponseEntity<>("Book with ISBN " + borrowingTransaction.getBook().getIsbn() + " not found", HttpStatus.BAD_REQUEST);
+//        }
+//
+//        // Add any additional validation logic here
+//
+//        // Save the borrowing transaction
+//        try {
+//            book.setAvailable(false);
+//            bookService.updateBook(book);
+//            BorrowingTransaction addedTransaction = borrowingTransactionRepository.save(borrowingTransaction);
+//
+//            return new ResponseEntity<>(addedTransaction, HttpStatus.CREATED);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+
+    public ResponseEntity<?> addBorrowingTransaction(BorrowingTransaction borrowingTransaction) {
+        // Check if the user exists
+        User user = userService.getUserById(borrowingTransaction.getUser().getUserID());
+        if (user == null) {
+            return new ResponseEntity<>("User with ID " + borrowingTransaction.getUser().getUserID() + " not found", HttpStatus.BAD_REQUEST);
+        }
+
+        // Check if the book exists
+        Book book = bookService.getBookById(borrowingTransaction.getBook().getIsbn());
+        if (book == null) {
+            return new ResponseEntity<>("Book with ISBN " + borrowingTransaction.getBook().getIsbn() + " not found", HttpStatus.BAD_REQUEST);
+        }
+
+        try {
+            // Update book availability
+            book.setAvailable(false);
+            bookService.updateBook(book);
+
+            // Save the borrowing transaction
+            BorrowingTransaction addedTransaction = borrowingTransactionRepository.save(borrowingTransaction);
+
+            return new ResponseEntity<>(addedTransaction, HttpStatus.CREATED);
+        } catch (Exception e) {
+            // Handle duplicate entry exception
+            if (e.getCause() instanceof ConstraintViolationException) {
+                return new ResponseEntity<>("Duplicate entry for borrowing transaction", HttpStatus.BAD_REQUEST);
+            } else {
+                return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+    }
+
+
     public BorrowingTransaction getBorrowingTransactionById(Long id) {
         return borrowingTransactionRepository.findById(id).orElse(null);
+
     }
-
-    public String borrowBook(BorrowingTransaction borrowingTransaction) {
-        // Check if borrowerId exists in User table
-        Optional<User> borrower = userService.getUserById(borrowingTransaction.getBorrowerId());
-        if (!borrower.isPresent()) {
-            return "Borrower not found";
-        }
-
-        // Check if bookIsbn exists in Book table
-        Book borrowedBook = bookService.getBookById(borrowingTransaction.getBookIsbn());
-        if (borrowedBook == null) {
-            return "Book not found";
-        }
-
-        // Check if the book is available
-        if (!borrowedBook.isAvailable()) {
-            return "Book is not available";
-        }
-
-        // Set borrowing date to current date
-        borrowingTransaction.setBorrowingDate(LocalDate.now());
-
-        // Update book availability status
-        borrowedBook.setAvailable(false);
-        bookService.updateBook(borrowedBook);
-
-//        return borrowingTransactionRepository.save(borrowingTransaction);
-        return "Success";
-    }
-
-
-
 }
