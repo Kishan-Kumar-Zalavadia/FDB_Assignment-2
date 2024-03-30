@@ -12,6 +12,7 @@ export class BooksComponent {
 
   searchQuery: string = '';
   searchResults: Book[] = [];
+  selectedOption: string = 'isbn'; // Default selected option
 
   constructor(private bookService: BookService) {}
 
@@ -31,36 +32,55 @@ export class BooksComponent {
     );
   }
 
-  searchByIsbn(): void {
+  search(): void {
     this.searchResults = [];
+    switch (this.selectedOption) {
+      case 'isbn':
+        this.searchByIsbn();
+        break;
+      case 'title':
+        this.searchByTitle();
+        break;
+      case 'author':
+        this.searchByAuthor();
+        break;
+      case 'genre':
+        this.searchByGenre();
+        break;
+      case 'publicationYear':
+        this.searchByPublicationYear();
+        break;
+      default:
+        console.error('Invalid option');
+        break;
+    }
+  }
+
+  searchByIsbn(): void {
     this.bookService
       .searchBooksByIsbn(this.searchQuery)
       .subscribe((result) => (this.searchResults = result));
   }
 
   searchByTitle(): void {
-    this.searchResults = [];
     this.bookService
       .searchBooksByTitle(this.searchQuery)
       .subscribe((result) => (this.searchResults = result));
   }
 
   searchByAuthor(): void {
-    this.searchResults = [];
     this.bookService
       .searchBooksByAuthor(this.searchQuery)
       .subscribe((result) => (this.searchResults = result));
   }
 
   searchByGenre(): void {
-    this.searchResults = [];
     this.bookService
       .searchBooksByGenre(this.searchQuery)
       .subscribe((result) => (this.searchResults = result));
   }
 
   searchByPublicationYear(): void {
-    this.searchResults = [];
     const year = parseInt(this.searchQuery);
     if (!isNaN(year)) {
       this.bookService

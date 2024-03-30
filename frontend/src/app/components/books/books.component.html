@@ -1,30 +1,13 @@
-<!-- <div class="book-container" *ngFor="let book of books">
-  <div class="book-details">
-    <h2>{{ book.title }}</h2>
-    <p><strong>ISBN:</strong> {{ book.isbn }}</p>
-    <p><strong>Author:</strong> {{ book.author }}</p>
-    <p><strong>Genre:</strong> {{ book.genre }}</p>
-    <p *ngIf="book.available" class="available"><strong></strong> Available</p>
-    <p *ngIf="!book.available" class="not-available">
-      <strong></strong> Not Available
-    </p>
-    <p><strong>Publication Year:</strong> {{ book.publicationYear }}</p>
-    <p>
-      <strong>Availability:</strong>
-      {{ book.available ? "Available" : "Not Available" }}
-    </p>
-  </div>
-</div> -->
-
 <div class="search-form">
   <input type="text" [(ngModel)]="searchQuery" placeholder="Search Query..." />
-  <button (click)="searchByIsbn()">Search by ISBN</button>
-  <button (click)="searchByTitle()">Search by Title</button>
-  <button (click)="searchByAuthor()">Search by Author</button>
-  <button (click)="searchByGenre()">Search by Genre</button>
-  <button (click)="searchByPublicationYear()">
-    Search by Publication Year
-  </button>
+  <select [(ngModel)]="selectedOption">
+    <option value="isbn">Search by ISBN</option>
+    <option value="title">Search by Title</option>
+    <option value="author">Search by Author</option>
+    <option value="genre">Search by Genre</option>
+    <option value="publicationYear">Search by Publication Year</option>
+  </select>
+  <button (click)="search()">Search</button>
   <button (click)="clearSearch()">Clear Search</button>
 </div>
 
