@@ -17,6 +17,7 @@ import { BooksComponent } from './components/books/books.component';
 import { TransactionsComponent } from './components/transactions/transactions.component';
 import { HistoryComponent } from './components/history/history.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { UsersComponent } from './components/users/users.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     TransactionsComponent,
     HistoryComponent,
     LandingPageComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,

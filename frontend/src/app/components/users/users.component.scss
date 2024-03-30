@@ -1,0 +1,38 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../../assets/lms.jpg");
+  background-size: cover;
+  backdrop-filter: blur(8px);
+  z-index: -1;
+}
+.user-list {
+  margin: 20px;
+  margin: 20px;
+  h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      border-radius: 4px;
+
+      strong {
+        font-weight: bold;
+        color: #333;
+      }
+    }
+  }
+}

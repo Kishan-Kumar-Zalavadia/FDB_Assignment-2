@@ -1,0 +1,12 @@
+<div class="background"></div>
+<div class="user-list">
+  <ul>
+    <li *ngFor="let user of users">
+      <p><strong>User ID:</strong> {{ user.userID }} <br /></p>
+      <p><strong>Email:</strong> {{ user.emailID }} <br /></p>
+      <p><strong>Name:</strong> {{ user.userName }} <br /></p>
+      <p><strong>Contact Number:</strong> {{ user.contactNumber }} <br /></p>
+      <p><strong>Admin:</strong> {{ user.admin ? "Yes" : "No" }} <br /></p>
+    </li>
+  </ul>
+</div>
