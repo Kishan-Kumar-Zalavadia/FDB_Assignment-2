@@ -8,19 +8,44 @@ import { BorrowerService } from 'src/app/services/BorrowerService/borrower.servi
   styleUrls: ['./history.component.scss'],
 })
 export class HistoryComponent {
-  userId!: number;
   borrowingHistory: BorrowingTransaction[] = [];
 
   constructor(private borrowingService: BorrowerService) {}
 
   ngOnInit(): void {}
 
+  searchType: string = 'userId';
+  searchValue!: string;
+
   searchBorrowingHistory(): void {
-    this.borrowingHistory = [];
-    this.borrowingService
-      .getBorrowingHistory(this.userId)
-      .subscribe((history) => {
-        this.borrowingHistory = history;
-      });
+    if (this.searchType === 'userId') {
+      this.borrowingHistory = [];
+      this.borrowingService
+        .getBorrowingHistoryByUserId(+this.searchValue)
+        .subscribe((history) => {
+          this.borrowingHistory = history;
+        });
+    } else if (this.searchType === 'userName') {
+      this.borrowingHistory = [];
+      this.borrowingService
+        .getBorrowingHistoryByUserName(this.searchValue)
+        .subscribe((history) => {
+          this.borrowingHistory = history;
+        });
+    } else if (this.searchType === 'email') {
+      this.borrowingHistory = [];
+      this.borrowingService
+        .getBorrowingHistoryByEmail(this.searchValue)
+        .subscribe((history) => {
+          this.borrowingHistory = history;
+        });
+    } else if (this.searchType === 'contactNumber') {
+      this.borrowingHistory = [];
+      this.borrowingService
+        .getBorrowingHistoryByContactNumber(this.searchValue)
+        .subscribe((history) => {
+          this.borrowingHistory = history;
+        });
+    }
   }
 }

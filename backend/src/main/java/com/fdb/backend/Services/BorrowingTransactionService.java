@@ -155,4 +155,16 @@ public class BorrowingTransactionService {
         return borrowingTransactionRepository.findByUserUserID(userId);
     }
 
+    public List<BorrowingTransaction> getBorrowingHistoryByUserName(String userName) {
+        return borrowingTransactionRepository.findByUserUserName(userName);
+    }
+
+    public List<BorrowingTransaction> getBorrowingHistoryByEmail(String email) {
+        return borrowingTransactionRepository.findByUserEmailID(email);
+    }
+
+    public List<BorrowingTransaction> getBorrowingHistoryByContactNumber(String contactNumber) {
+        return borrowingTransactionRepository.findByUserContactNumber(contactNumber);
+    }
+
 }

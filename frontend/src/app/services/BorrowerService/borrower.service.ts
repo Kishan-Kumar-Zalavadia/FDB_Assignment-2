@@ -49,9 +49,35 @@ export class BorrowerService {
     );
   }
 
-  getBorrowingHistory(userId: number): Observable<BorrowingTransaction[]> {
+  getBorrowingHistoryByUserId(
+    userId: number
+  ): Observable<BorrowingTransaction[]> {
     return this._http.get<BorrowingTransaction[]>(
       `${this.apiUrl}/borrowing-transactions/user/${userId}`
+    );
+  }
+
+  getBorrowingHistoryByUserName(
+    userName: string
+  ): Observable<BorrowingTransaction[]> {
+    return this._http.get<BorrowingTransaction[]>(
+      `${this.apiUrl}/borrowing-transactions/user/name/${userName}`
+    );
+  }
+
+  getBorrowingHistoryByEmail(
+    email: string
+  ): Observable<BorrowingTransaction[]> {
+    return this._http.get<BorrowingTransaction[]>(
+      `${this.apiUrl}/borrowing-transactions/user/email/${email}`
+    );
+  }
+
+  getBorrowingHistoryByContactNumber(
+    contactNumber: string
+  ): Observable<BorrowingTransaction[]> {
+    return this._http.get<BorrowingTransaction[]>(
+      `${this.apiUrl}/borrowing-transactions/user/contact/${contactNumber}`
     );
   }
 }

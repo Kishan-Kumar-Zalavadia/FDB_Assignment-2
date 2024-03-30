@@ -10,4 +10,10 @@ import java.util.List;
 @Repository
 public interface BorrowingTransactionRepository extends JpaRepository<BorrowingTransaction, Long> {
     List<BorrowingTransaction> findByUserUserID(Long userId);
+
+    List<BorrowingTransaction> findByUserUserName(String userName);
+
+    List<BorrowingTransaction> findByUserEmailID(String email);
+
+    List<BorrowingTransaction> findByUserContactNumber(String contactNumber);
 }

@@ -72,4 +72,19 @@ public class BorrowingTransactionController {
     public List<BorrowingTransaction> getBorrowingHistoryByUserId(@PathVariable Long userId) {
         return borrowingTransactionService.getBorrowingHistoryByUserId(userId);
     }
+
+    @GetMapping("/user/name/{userName}")
+    public List<BorrowingTransaction> getBorrowingHistoryByUserName(@PathVariable String userName) {
+        return borrowingTransactionService.getBorrowingHistoryByUserName(userName);
+    }
+
+    @GetMapping("/user/email/{email}")
+    public List<BorrowingTransaction> getBorrowingHistoryByEmail(@PathVariable String email) {
+        return borrowingTransactionService.getBorrowingHistoryByEmail(email);
+    }
+
+    @GetMapping("/user/contact/{contactNumber}")
+    public List<BorrowingTransaction> getBorrowingHistoryByContactNumber(@PathVariable String contactNumber) {
+        return borrowingTransactionService.getBorrowingHistoryByContactNumber(contactNumber);
+    }
 }

@@ -1,9 +1,35 @@
 <!-- borrowing-history.component.html -->
 
-<div>
+<!-- <div>
   <h2>Borrowing History</h2>
   <label for="userId">Enter User ID: </label>
   <input type="number" id="userId" [(ngModel)]="userId">
+  <button (click)="searchBorrowingHistory()">Search</button>
+</div>
+
+<div *ngIf="borrowingHistory">
+  <ul>
+    <li *ngFor="let transaction of borrowingHistory">
+      Book: {{ transaction.book.title }}<br>
+      Borrowing Date: {{ transaction.borrowingDate | date }}<br>
+      Return Date: {{ transaction.returnDate | date }}
+    </li>
+  </ul>
+</div> -->
+
+
+<!-- borrowing-history.component.html -->
+
+<div>
+  <h2>Borrowing History</h2>
+  <label for="searchType">Search By:</label>
+  <select id="searchType" [(ngModel)]="searchType">
+    <option value="userId">User ID</option>
+    <option value="userName">User Name</option>
+    <option value="email">Email</option>
+    <option value="contactNumber">Contact Number</option>
+  </select>
+  <input type="text" id="searchValue" [(ngModel)]="searchValue">
   <button (click)="searchBorrowingHistory()">Search</button>
 </div>
 
