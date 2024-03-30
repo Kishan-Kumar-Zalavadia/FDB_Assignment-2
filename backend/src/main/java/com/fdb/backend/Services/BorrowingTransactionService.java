@@ -139,7 +139,7 @@ public class BorrowingTransactionService {
         }
 
         // Set the return date to the current date
-        transaction.setReturnDate(LocalDate.now());
+        transaction.setReturnDate(borrowingTransaction.getReturnDate());
         borrowingTransactionRepository.save(transaction);
 
         // Update book availability

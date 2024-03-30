@@ -100,13 +100,10 @@ export class TransactionsComponent {
     this.showBookPopup = false;
   }
 
-  selectedDate: Date | null = null;
+  selectedDate!: Date;
 
-  returnBook(
-    selectedDate: Date | null,
-    borrowingTransaction: BorrowingTransaction
-  ) {
-    borrowingTransaction.returnDate = this.selectedDate ?? null; // Use nullish coalescing operator
+  returnBook(selectedDate: Date, borrowingTransaction: BorrowingTransaction) {
+    borrowingTransaction.returnDate = this.selectedDate;
     console.log('Transaction: ' + JSON.stringify(borrowingTransaction));
     this.transactionService.returnBook(borrowingTransaction).subscribe(
       () => console.log('Book returned successfully'),
