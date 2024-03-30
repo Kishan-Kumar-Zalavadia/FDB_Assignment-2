@@ -15,6 +15,7 @@ import { AddBorrowerComponent } from './components/add-borrower/add-borrower.com
 import { BorrowBookComponent } from './components/borrow-book/borrow-book.component';
 import { BooksComponent } from './components/books/books.component';
 import { TransactionsComponent } from './components/transactions/transactions.component';
+import { HistoryComponent } from './components/history/history.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { TransactionsComponent } from './components/transactions/transactions.co
     BorrowBookComponent,
     BooksComponent,
     TransactionsComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,

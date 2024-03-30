@@ -48,4 +48,10 @@ export class BorrowerService {
       borrowingTransaction
     );
   }
+
+  getBorrowingHistory(userId: number): Observable<BorrowingTransaction[]> {
+    return this._http.get<BorrowingTransaction[]>(
+      `${this.apiUrl}/borrowing-transactions/user/${userId}`
+    );
+  }
 }
