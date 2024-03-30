@@ -101,3 +101,71 @@ select {
   border: 1px solid #ccc;
   font-size: 16px;
 }
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 20px;
+  width: 500px;
+  color: #fff;
+}
+
+.popup h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.popup form .form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #5bc0de; /* Light blue color for labels */
+}
+
+.popup form .form-group input[type="text"],
+.popup form .form-group input[type="number"],
+.popup form .form-group input[type="email"],
+.popup form .form-group input[type="password"],
+.popup form .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #333;
+  color: #fff;
+}
+
+.popup form button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.popup form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.popup button {
+  background-color: #dc3545; /* Red color for cancel button */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+}

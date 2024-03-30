@@ -1,7 +1,6 @@
 <div class="background"></div>
 <div class="transaction-list">
-    
-    <div *ngFor="let transaction of transactions" class="transaction-item">
+  <div *ngFor="let transaction of transactions" class="transaction-item">
     <div class="transaction-details">
       <p><strong>Transaction ID:</strong> {{ transaction.id }}</p>
       <p>
@@ -27,6 +26,38 @@
       <div *ngIf="transaction.returnDate != null">
         <p><strong>Return Date:</strong> {{ transaction.returnDate | date }}</p>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" *ngIf="showUserPopup"></div>
+<div class="popup" *ngIf="showUserPopup">
+  <div class="popup-container">
+    <div class="popup-content">
+      <h2>User Details</h2>
+      <p><strong>User ID:</strong> {{ seeUser?.userID }}</p>
+      <p><strong>Email:</strong> {{ seeUser?.emailID }}</p>
+      <p><strong>Name:</strong> {{ seeUser?.userName }}</p>
+      <p><strong>Contact Number:</strong> {{ seeUser?.contactNumber }}</p>
+      <p><strong>Admin:</strong> {{ seeUser?.admin ? 'Yes' : 'No' }}</p>
+      <button (click)="closeUserPopup()">Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" *ngIf="showBookPopup"></div>
+<div class="popup" *ngIf="showBookPopup">
+  <div class="popup-container">
+    <div class="popup-content">
+      <h2>Book Details</h2>
+      <p><strong>ISBN:</strong> {{ seeBook?.isbn }}</p>
+      <p><strong>Title:</strong> {{ seeBook?.title }}</p>
+      <p><strong>Author:</strong> {{ seeBook?.author }}</p>
+      <p><strong>Genre:</strong> {{ seeBook?.genre }}</p>
+      <p><strong>Publication Year:</strong> {{ seeBook?.publicationYear }}</p>
+      <p><strong>Available:</strong> {{ seeBook?.available ? 'Yes' : 'No' }}</p>
+      
+      <button (click)="closeBookPopup()">Close</button>
     </div>
   </div>
 </div>
